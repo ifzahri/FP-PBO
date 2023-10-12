@@ -1,4 +1,4 @@
-package its.pbo.fp;
+package its.pbo.fp.main;
 import javax.swing.*;
 import java.awt.*;
 public class GameWindow {
@@ -12,6 +12,7 @@ public class GameWindow {
         jframe.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         jframe.setSize(screenSize.width, screenSize.height);
         jframe.add(gamePanel);
+        jframe.setLocationRelativeTo(null);
         jframe.setVisible(true);
     }
 }
