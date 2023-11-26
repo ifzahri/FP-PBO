@@ -14,25 +14,39 @@ public class GamePanel extends JPanel {
     private MouseInputs mouseInputs;
     private int xChanges = 200;
     private int yChanges = 100;
-    private BufferedImage imageBg, imageUI, subImage;
+    private BufferedImage image;
+    private BufferedImage[] idleAnimation;
     public GamePanel() {
         mouseInputs = new MouseInputs(this);
         importImg();
+        loadAnimations();
         setPanelSize();
         addKeyListener(new KeyboardInputs(this));
         addMouseListener(mouseInputs);
         addMouseMotionListener(mouseInputs);
     }
 
+    private void loadAnimations() {
+        idleAnimation = new BufferedImage[7];
+
+        for (int i=0; i < idleAnimation.length; i++) {
+            idleAnimation[i] = image.getSubimage(i*33, 0, 37, 50);
+        }
+    }
+
     private void importImg() {
-        InputStream isBg = getClass().getResourceAsStream("/Backgrounds/mountains_a.png");
-        InputStream isUI = getClass().getResourceAsStream("/UI/text_fx.png");
+        InputStream isBg = getClass().getResourceAsStream("/Adventurer/adventurer-result.png");
 
         try {
-            imageBg = ImageIO.read(isBg);
-            imageUI = ImageIO.read(isUI);
+            image = ImageIO.read(isBg);
         } catch (IOException e) {
             e.printStackTrace();
+        } finally {
+            try {
+                isBg.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
     }
 
@@ -56,9 +70,7 @@ public class GamePanel extends JPanel {
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
 
-        subImage = imageUI.getSubimage(6*10, 0*16, 10, 16);
-        g.drawImage(imageBg, (int) xChanges, (int) yChanges, null);
-        g.drawImage(subImage, 500, 0, 40, 64, null);
+        g.drawImage(idleAnimation[3], (int) xChanges, (int) yChanges, null);
     }
 
 }
