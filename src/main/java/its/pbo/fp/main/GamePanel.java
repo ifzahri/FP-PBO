@@ -16,6 +16,7 @@ public class GamePanel extends JPanel {
     private int yChanges = 100;
     private BufferedImage image;
     private BufferedImage[] idleAnimation;
+    private int aniTick, aniIndex, aniSpeed = 15;
     public GamePanel() {
         mouseInputs = new MouseInputs(this);
         importImg();
@@ -27,15 +28,15 @@ public class GamePanel extends JPanel {
     }
 
     private void loadAnimations() {
-        idleAnimation = new BufferedImage[7];
+        idleAnimation = new BufferedImage[3];
 
-        for (int i=0; i < idleAnimation.length; i++) {
-            idleAnimation[i] = image.getSubimage(i*33, 0, 37, 50);
+        for (int i=1; i < idleAnimation.length; i++) {
+            idleAnimation[i] = image.getSubimage(i*50, 0, 50, 37);
         }
     }
 
     private void importImg() {
-        InputStream isBg = getClass().getResourceAsStream("/Adventurer/adventurer-result.png");
+        InputStream isBg = getClass().getResourceAsStream("/Adventurer/Sprites/adventurer-idle-00.png");
 
         try {
             image = ImageIO.read(isBg);
@@ -67,10 +68,24 @@ public class GamePanel extends JPanel {
         this.xChanges = x;
         this.yChanges = y;
     }
+    
+    private void updateAnimationTick() {
+        aniTick++;
+        if (aniTick > aniSpeed) {
+            aniTick = 0;
+            aniIndex++;
+            if (aniIndex >= idleAnimation.length) {
+                aniIndex = 0;
+            }
+        }
+    }
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
 
-        g.drawImage(idleAnimation[3], (int) xChanges, (int) yChanges, null);
+        updateAnimationTick();
+
+        g.drawImage(idleAnimation[aniIndex], (int) xChanges, (int) yChanges, null);
     }
+
 
 }
