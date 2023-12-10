@@ -1,6 +1,6 @@
 # Final Project - Pemrograman Berorientasi Objek (E)
 
-## Nama Game : Bima the Traveler
+## Nama Game : 2048
 ## Nama Kelompok : Yang SMK SMK Aja
 
 | Anggota              | NRP        |
@@ -10,8 +10,10 @@
 
 ## Referensi
 
-[Kaarin Gaming](https://www.youtube.com/playlist?list=PL4rzdwizLaxYmltJQRjq18a9gsSyEQQ-0)
+[Structure](https://techvidvan.com/tutorials/java-2048-game/)
 
-[Pyramidion - Platformer](https://github.com/puyul123/Pyramidion)
+[Implementation](https://gabcaz.github.io/my-implementation-of-2048/)
 
-[Hellscape - FPS](https://github.com/mvinorian/hellscape)
+[Instructables](https://www.instructables.com/Program-Your-Own-2048-Game-WJava/)
+
+[GUI](https://joepolygon.com/static/portfolio/downloads/2048/Making2048sGUI.pdf)
